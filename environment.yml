@@ -1,0 +1,34 @@
+name: cellprofiler
+# in order of priority: lowest (top) to highest (bottom)
+channels:
+  - goodman # mysql-python for mac
+  - bioconda
+  - cyclus # java-jdk for windows
+  - conda-forge # libxml2 for windows
+dependencies:
+  - python=2.7
+  - jupyter
+  - ipywidgets
+  - matplotlib
+  - wxpython
+  - lxml
+  - libxml2
+  - libxslt
+  - cython
+  - mysql-python
+  - mahotas
+  - numpy
+  - scipy
+  - pyzmq
+  - h5py
+  - java-jdk
+  - pillow
+  - javabridge
+  - pip
+  - pip:
+    - python-bioformats
+    - centrosome
+    - prokaryote
+    - cellh5
+    - inflect
+    - "--editable=git+https://github.com/scikit-image/scikit-image.git@master#egg=scikit-image-0.13.0dev"
