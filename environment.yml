@@ -1,3 +1,6 @@
+# run: conda env create -f environment.yml
+# run: conda env update -f environment.yml
+# run: conda env remove -n cellprofiler
 name: cellprofiler
 # in order of priority: lowest (top) to highest (bottom)
 channels:
@@ -9,7 +12,7 @@ dependencies:
   - python=2.7
   - jupyter
   - ipywidgets
-  - matplotlib
+  - matplotlib<2
   - wxpython
   - lxml
   - libxml2

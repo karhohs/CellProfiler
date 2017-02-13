@@ -2,6 +2,8 @@ import cellprofiler.image
 import cellprofiler.module
 import cellprofiler.setting
 import numpy
+import skimage
+import skimage.measure
 
 class Seeding(cellprofiler.module.ImageProcessing):
     module_name = "Seeding"
@@ -24,14 +26,18 @@ class Seeding(cellprofiler.module.ImageProcessing):
         x = images.get_image(x_name)
         dimensions = x.dimensions
         y_data = x.pixel_data.copy()
+        y_data = skimage.img_as_uint(y_data)
+        y_data = skimage.measure.label(y_data)
         floor_object_number = numpy.amax(y_data) + 1
         ceiling_object_number = floor_object_number + 1
         y_data[0, :, :] = floor_object_number
         y_data[-1, :, :] = ceiling_object_number
+        print type(y_data)
         y = cellprofiler.image.Image(
             dimensions=dimensions,
             image=y_data,
-            parent_image=x
+            parent_image=x,
+            convert=False
         )
         y_name = self.y_name.value
         images.add(y_name, y)

@@ -22,6 +22,7 @@ import matplotlib.cm
 import matplotlib.colorbar
 import matplotlib.colors
 import matplotlib.gridspec
+import matplotlib.image
 import matplotlib.patches
 import matplotlib.pyplot
 import numpy
