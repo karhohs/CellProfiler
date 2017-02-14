@@ -22,6 +22,9 @@ class AdaptiveLocalNormalization(cellprofiler.module.ImageProcessing):
     unwanted variation if stitching images or processing a group of images, because each is scaled independently.
     However, if the distribution of intensities across images is similar then this shouldn't too costly. To globally
     scale a set of images would require more coding overhead...
+
+    The radius search could be improved by adding a persistence factor. For example, choose the radius that meets the
+    cutoff criteria *n* consecutive times.
     """
     module_name = "AdaptiveLocalNormalization"
     variable_revision_number = 1
