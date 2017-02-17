@@ -247,6 +247,18 @@ class AdaptiveLocalNormalization(cellprofiler.module.ImageProcessing):
         :param threshold_std: a float within [0,1.0). It specifies a fraction of the global_std.
         :param radius_max: The largest radius allowed during the radius search for each pixel
         :return radius_image: a 2D ndarray the same size as img with search_radius for every pixel
+
+        There is a *std* threshold and *cv* threshold to determine the radius of normalization. We found that *std*
+        can be biased against high intensity values that will have the same standard deviation as a low intensity
+        region despite having less spread around the mean. Coefficient of variation is a metric that measures the
+        relative variation about the mean as opposed to the absolute variation. Coefficient of variation is rather
+        noisy for near zero-mean distributions, but this isn't such an issue for uint16 images. These images are
+        strictly positive if 1 is added to the image. This is why $img_cv = img_std / (img_mean + 1)$. However,
+        if an image has been background subtracted and large regions of the image are zero-mean or near zero-mean,
+        then *cv* may enhance too much of the background. Therefore, both metrics are made available.
+
+        A more useful metric might be to combine *cv* and *std* and take the geometric mean, i.e. $new_metric = sqrt(
+        img_cv*img_std)$. 
         """
         radius_image = numpy.zeros_like(img)
 
