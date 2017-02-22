@@ -20,6 +20,7 @@ dependencies:
   - cython
   - mysql-python
   - mahotas
+  - tifffile
   - numpy
   - scipy
   - pyzmq
@@ -34,4 +35,4 @@ dependencies:
     - prokaryote
     - cellh5
     - inflect
-    - "--editable=git+https://github.com/scikit-image/scikit-image.git@master#egg=scikit-image-0.13.0dev"
+    - "--editable=git+https://github.com/scikit-image/scikit-image.git@c8918053ce34b9402a90be61b13ecabf541e90ee#egg=scikit-image-0.13.0dev"
